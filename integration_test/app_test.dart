@@ -4,6 +4,19 @@ import 'package:integration_test/integration_test.dart';
 import 'package:remind_me/main.dart' as app;
 import 'dart:io';
 
+takeScreenshot(tester, binding, name) async {
+  if (Platform.isAndroid) {
+    try{
+      await binding.convertFlutterSurfacetoImage();
+    }
+    catch (e) {
+      print("TakeScreenshot exception $e");
+    }
+    await tester.pumpAndSettle();
+  }
+  await binding.takeScreenShot(name);
+}
+
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding();
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -17,19 +30,4 @@ void main() {
       await takeScreenshot(tester, binding, 'Screenshot');
     });
   });
-}
-
-takeScreenshot(tester, binding, name) async {
-  if (Platform.isAndroid) {
-    try{
-      await tester.pumpAndSettle();
-      await binding.convertFlutterSurfacetoImage();
-      await tester.pumpAndSettle();
-    }
-    catch (e) {
-      print("TakeScreenshot exception $e");
-    }
-    await tester.pumpAndSettle();
-  }
-  await binding.takeScreenShot(name);
 }
