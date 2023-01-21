@@ -9,27 +9,19 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('end-to-end test', () {
     testWidgets('boot app', (tester) async {
+      late String platform;
+      if(Platform.isAndroid){
+        platform = 'android';
+      }
       //app loads
       app.main();
       await tester.pumpAndSettle();
 
       //Screenshot time
-      await takeScreenshot(tester, binding, 'Screenshot');
-    });
-  });
-}
-
-takeScreenshot(tester, binding, name) async {
-  if (Platform.isAndroid) {
-    try{
       await tester.pumpAndSettle();
       await binding.convertFlutterSurfaceToImage();
       await tester.pumpAndSettle();
-    }
-    catch (e) {
-      print("TakeScreenshot exception $e");
-    }
-    await tester.pumpAndSettle();
-  }
-  await binding.takeScreenShot(name);
+      await binding.takeScreenshot('$platform-screenshot');
+    });
+  });
 }
