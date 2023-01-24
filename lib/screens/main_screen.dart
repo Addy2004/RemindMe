@@ -4,7 +4,7 @@ import 'package:remind_me/screens/home_screen.dart';
 import 'settings_screen.dart';
 import 'menu_screen.dart';
 import 'package:remind_me/widgets/switch_icon.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:remind_me/widgets/curved_navigation_bar/curved_navigation_bar.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
