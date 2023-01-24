@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remind_me/constants.dart';
+import 'package:remind_me/widgets/reminder_tile.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({Key? key}) : super(key: key);
@@ -15,19 +16,19 @@ class MenuScreen extends StatelessWidget {
             floating: true,
             pinned: true,
             expandedHeight: 341,
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.pink,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset('images/pedro.gif'),
             ),
             title: const Center(
-                child: Text('Text',
-                  style: TextStyle(color: Colors.pink),
-                ),
+              child: Text(':(',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
           SliverToBoxAdapter(
             child: widget(),
-          )
+          ),
         ],
       ),
     );
@@ -46,14 +47,7 @@ Widget widget(){
         itemCount: 30,
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index){
-          return ListTile(
-            leading: const Icon(Icons.access_alarms_sharp, color: Colors.white,),
-            trailing: const Text('GFG',
-              style: TextStyle(color: Colors.white),),
-            title: Text('Reminder ${index + 1}',
-              style: const TextStyle(color: Colors.white),
-            ),
-          );
+          return ReminderTile(index: index);
         },
       ),
       ],
