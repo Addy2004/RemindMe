@@ -49,18 +49,23 @@ SwitchIcon(switchIconColorCondition: 2 == currentIndex, icon: Icons.settings)
         ),
         bottomNavigationBar: CurvedNavigationBar(
           animationCurve: Curves.easeInQuart,
-          animationDuration: const Duration(milliseconds: 600),
+          animationDuration: const Duration(
+              milliseconds: kCurvedNavigationBarAnimationDuration),
           onTap: (newIndex) {
             setState((){
               //updates current index when page is changes via navigation bar
               currentIndex = newIndex;
             });
             //controls animation to pages
-            pageController.animateToPage(newIndex, duration: const Duration(milliseconds: 750), curve: Curves.easeInQuart);
+            pageController.animateToPage(
+                newIndex,
+                duration: const Duration(
+                    milliseconds: kPageSwipeAnimationDuration),
+                curve: Curves.easeInQuart);
           },
-          color: kCurvedNavigationBarBackgroundColor,
-          buttonBackgroundColor: kMainScreenBackgroundColor,
-          backgroundColor: Colors.transparent,
+          color: kCurvedNavigationBarForegroundColor,
+          buttonBackgroundColor: kCurvedNavigationBarButtonBackgroundColor,
+          backgroundColor: kCurvedNavigationBarBackgroundColor,
           index: currentIndex,
           height: kCurvedBottomNavigationBarHeight,
           items: bottomNavigationBarIconsList,
