@@ -34,6 +34,7 @@ class AddReminderTile extends StatelessWidget {
                 showModalBottomSheet(
                   barrierColor: Colors.black.withAlpha(1),
                     backgroundColor: Colors.transparent,
+                    isScrollControlled: true,
                     context: context,
                     builder: (context) => SingleChildScrollView(
                       child: Container(
