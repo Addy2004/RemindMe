@@ -63,40 +63,60 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-            child: TextField(
-              onChanged: (value) {},
-              cursorColor: Colors.white,
-              style: const TextStyle(color: Colors.white),
-              textAlign: TextAlign.center,
-              autofocus: false,
-              decoration: const InputDecoration(
-                hintText: 'Buy me a coffee',
-                hintStyle: TextStyle(color: Colors.white70),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 1.0),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(40.0),
+            child: Stack(
+              children: [
+                Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(40.0),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26.withOpacity(0.1675),
+                          blurRadius: 7.5,
+                          spreadRadius: 5
+                      )
+                    ]
                   ),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 2.0),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(40.0),
+                TextField(
+                  onChanged: (value) {},
+                  cursorColor: Colors.white,
+                  style: const TextStyle(color: Colors.white),
+                  textAlign: TextAlign.center,
+                  autofocus: false,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    fillColor: Colors.pink,
+                    hintText: 'Buy me a coffee',
+                    hintStyle: TextStyle(color: Colors.white70),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 1.0),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40.0),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 2.0),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40.0),
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 1.0),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40.0),
+                      ),
+                    ),
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 1.0),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40.0),
+                      ),
+                    ),
                   ),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 1.0),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(40.0),
-                  ),
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 1.0),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(40.0),
-                  ),
-                ),
-              ),
+              ],
             ),
           ),
           const SizedBox(height: 10.0),
@@ -113,6 +133,8 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
             minWidth: 10.0,
             child: OutlinedButton(
               style: ButtonStyle(
+                elevation: MaterialStateProperty.all(10.0),
+                backgroundColor: MaterialStateProperty.all(Colors.pink),
                 padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.only(
                     top: 20.0, bottom: 20.0,
                 left: 40.0, right: 40.0),
@@ -157,6 +179,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
           const SizedBox(height: 10.0),
           TextButton(
             style: ButtonStyle(
+              elevation: MaterialStateProperty.all(10.0),
               padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.only(
                 top: 10.0, bottom: 10.0,
                 left: 120.0, right: 120.0,
@@ -174,6 +197,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
               style: TextStyle(color: Colors.pink),
             ),
           ),
+          const SizedBox(height: 10.0),
         ],
       ),
     );
