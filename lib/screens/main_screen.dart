@@ -4,7 +4,7 @@ import 'package:remind_me/screens/home_screen.dart';
 import 'settings_screen.dart';
 import 'menu_screen.dart';
 import 'package:remind_me/widgets/switch_icon.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:remind_me/widgets/curved_navigation_bar/curved_navigation_bar.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -49,18 +49,23 @@ SwitchIcon(switchIconColorCondition: 2 == currentIndex, icon: Icons.settings)
         ),
         bottomNavigationBar: CurvedNavigationBar(
           animationCurve: Curves.easeInQuart,
-          animationDuration: const Duration(milliseconds: 600),
+          animationDuration: const Duration(
+              milliseconds: kCurvedNavigationBarAnimationDuration),
           onTap: (newIndex) {
             setState((){
               //updates current index when page is changes via navigation bar
               currentIndex = newIndex;
             });
             //controls animation to pages
-            pageController.animateToPage(newIndex, duration: const Duration(milliseconds: 750), curve: Curves.easeInQuart);
+            pageController.animateToPage(
+                newIndex,
+                duration: const Duration(
+                    milliseconds: kPageSwipeAnimationDuration),
+                curve: Curves.easeInQuart);
           },
-          color: kCurvedNavigationBarBackgroundColor,
-          buttonBackgroundColor: kMainScreenBackgroundColor,
-          backgroundColor: Colors.transparent,
+          color: kCurvedNavigationBarForegroundColor,
+          buttonBackgroundColor: kCurvedNavigationBarButtonBackgroundColor,
+          backgroundColor: kCurvedNavigationBarBackgroundColor,
           index: currentIndex,
           height: kCurvedBottomNavigationBarHeight,
           items: bottomNavigationBarIconsList,
