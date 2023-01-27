@@ -97,28 +97,28 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
         title: const Text('RemindMe'),
       ),
       body: Center(
-        child: Column(
-          children: [
-            Container(
-              height: 350,
-              width: 350,
-              margin: const EdgeInsets.only(left:20, right: 20, bottom: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(width: 2, color: Colors.white),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                    // color: Colors.grey[300],
-                    color: Colors.black,
-                    offset: Offset(4, 4),
-                    blurRadius: 10,
-                    spreadRadius: -5,
-                  ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 30, right: 30),
+          child: Column(
+            children: [
+              Container(
+                height: 350,
+                width: 350,
+                margin: const EdgeInsets.only(bottom: 8),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(width: 2, color: Colors.white),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                      // color: Colors.grey[300],
+                      color: Colors.black,
+                      offset: Offset(4, 4),
+                      blurRadius: 10,
+                      spreadRadius: -5,
+                    ),
+                  ],
+                ),
                 child: TableCalendar(
                   focusedDay: _focusedDay,
                   firstDay: DateTime(2023),
@@ -177,33 +177,34 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                   eventLoader: _listOfDayEvents,
                 ),
               ),
-            ),
 
-            //displaying added events below calendar
-            ..._listOfDayEvents(_selectedDate!).map(
-              (myEvents) => SizedBox(
-                width: 360,
-                child: Card(
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.done,
-                      color: Colors.teal,
+              //displaying added events below calendar
+              ..._listOfDayEvents(_selectedDate!).map(
+                (myEvents) => SizedBox(
+                  width: 360,
+                  child: Card(
+                    elevation: 10.0,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
-                    title: Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      // child: Text('Event Title: ${myEvents['eventTitle']}'),
-                      child: Text('${myEvents['eventTitle']}'),
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.done,
+                        color: Colors.teal,
+                      ),
+                      title: Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        // child: Text('Event Title: ${myEvents['eventTitle']}'),
+                        child: Text('${myEvents['eventTitle']}'),
+                      ),
+                      // subtitle: Text('Description: ${myEvents['eventDesc']}'),
+                      subtitle: Text('${myEvents['eventDesc']}'),
                     ),
-                    // subtitle: Text('Description: ${myEvents['eventDesc']}'),
-                    subtitle: Text('${myEvents['eventDesc']}'),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
