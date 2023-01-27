@@ -7,10 +7,19 @@ const kUserGreetTextStyle = TextStyle(fontSize: 25.0, color: Colors.white);
 
 //CurvedNavigationBar
 const double kCurvedBottomNavigationBarHeight = 45.5;
-const Color kCurvedNavigationBarBackgroundColor = Colors.white;
+const Color kCurvedNavigationBarForegroundColor = Colors.white;
+const Color kCurvedNavigationBarBackgroundColor = Colors.transparent;
+const Color kCurvedNavigationBarButtonBackgroundColor = Colors.pink;
 
 const Color kCurvedNavigationBarIconColor = Colors.black;
 const Color kCurvedNavigationBarActiveIconColor = Colors.white;
 
 const double kCurvedNavigationBarIconSize = 30.0;
 const double kCurvedNavigationBarActiveIconSize = 25.0;
+
+const int kCurvedNavigationBarAnimationDuration = 600;
+const int kPageSwipeAnimationDuration = 750;
+
+//MenuScreen
+const double kSliverAppBarExpandedHeight = 341;
+const Color kSliverAppBarBackgroundColor = Colors.pink;

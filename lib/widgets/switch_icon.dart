@@ -5,7 +5,8 @@ class SwitchIcon extends StatefulWidget {
   final bool switchIconColorCondition;
   final IconData icon;
   const SwitchIcon({
-    required this.switchIconColorCondition, required this.icon,
+    required this.switchIconColorCondition,
+    required this.icon,
     Key? key,
   }) : super(key: key);
 
