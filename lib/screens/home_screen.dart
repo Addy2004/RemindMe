@@ -99,7 +99,9 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
       body: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 2, right: 2, bottom: 8),
+            height: 350,
+            width: 350,
+            margin: const EdgeInsets.only(left:20, right: 20, bottom: 8),
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(width: 2, color: Colors.white),
@@ -115,7 +117,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
               ],
             ),
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 5),
+              padding: const EdgeInsets.only(bottom: 8.0),
               child: TableCalendar(
                 focusedDay: _focusedDay,
                 firstDay: DateTime(2023),
@@ -123,6 +125,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
 
                 startingDayOfWeek: StartingDayOfWeek.monday,
                 rowHeight: 40,
+
 
                 headerStyle: const HeaderStyle(
                   titleCentered: true,
@@ -177,22 +180,25 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
 
           //displaying added events below calendar
           ..._listOfDayEvents(_selectedDate!).map(
-            (myEvents) => Card(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              child: ListTile(
-                leading: const Icon(
-                  Icons.done,
-                  color: Colors.teal,
+            (myEvents) => SizedBox(
+              width: 360,
+              child: Card(
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                title: Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  // child: Text('Event Title: ${myEvents['eventTitle']}'),
-                  child: Text('${myEvents['eventTitle']}'),
+                child: ListTile(
+                  leading: const Icon(
+                    Icons.done,
+                    color: Colors.teal,
+                  ),
+                  title: Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    // child: Text('Event Title: ${myEvents['eventTitle']}'),
+                    child: Text('${myEvents['eventTitle']}'),
+                  ),
+                  // subtitle: Text('Description: ${myEvents['eventDesc']}'),
+                  subtitle: Text('${myEvents['eventDesc']}'),
                 ),
-                // subtitle: Text('Description: ${myEvents['eventDesc']}'),
-                subtitle: Text('${myEvents['eventDesc']}'),
               ),
             ),
           ),
