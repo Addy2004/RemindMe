@@ -23,3 +23,8 @@ const int kPageSwipeAnimationDuration = 750;
 //MenuScreen
 const double kSliverAppBarExpandedHeight = 341;
 const Color kSliverAppBarBackgroundColor = Colors.pink;
+
+//homeScreen
+const Color todayDateColor = Colors.pink;
+const Color homeScreenBackgroundColor = Colors.pink;
+const Color userSelectedDateColor = Color(0xffF06292);
