@@ -96,113 +96,115 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
         centerTitle: true,
         title: const Text('RemindMe'),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 350,
-            width: 350,
-            margin: const EdgeInsets.only(left:20, right: 20, bottom: 8),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(width: 2, color: Colors.white),
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                  // color: Colors.grey[300],
-                  color: Colors.black,
-                  offset: Offset(4, 4),
-                  blurRadius: 10,
-                  spreadRadius: -5,
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: TableCalendar(
-                focusedDay: _focusedDay,
-                firstDay: DateTime(2023),
-                lastDay: DateTime(2024),
-
-                startingDayOfWeek: StartingDayOfWeek.monday,
-                rowHeight: 40,
-
-
-                headerStyle: const HeaderStyle(
-                  titleCentered: true,
-                  formatButtonVisible: false,
-                ),
-
-                daysOfWeekStyle: const DaysOfWeekStyle(
-                  weekendStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
-                  weekdayStyle: TextStyle(fontWeight: FontWeight.bold),
-                ),
-
-                calendarStyle: const CalendarStyle(
-                  weekendTextStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
-                  defaultTextStyle: TextStyle(fontWeight: FontWeight.bold),
-
-                  //for styling the current date wala circle
-                  todayDecoration: BoxDecoration(
-                    color: todayDateColor,
-                    shape: BoxShape.circle,
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              height: 350,
+              width: 350,
+              margin: const EdgeInsets.only(left:20, right: 20, bottom: 8),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(width: 2, color: Colors.white),
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: const [
+                  BoxShadow(
+                    // color: Colors.grey[300],
+                    color: Colors.black,
+                    offset: Offset(4, 4),
+                    blurRadius: 10,
+                    spreadRadius: -5,
                   ),
-
-                  // for styling the selected date wala circle
-                  selectedDecoration: BoxDecoration(
-                    color: userSelectedDateColor,
-                    shape: BoxShape.circle,
-                  ),
-
-                ),
-
-                // to keep focus on user selected date as well as current date
-                onDaySelected: (selectedDay, focusedDay) {
-                  if (!isSameDay(_selectedDate, selectedDay)) {
-                    setState(() {
-                      _selectedDate = selectedDay;
-                      _focusedDay = focusedDay;
-                    });
-                  }
-                },
-                selectedDayPredicate: (day) {
-                  return isSameDay(_selectedDate, day);
-                },
-
-                //called whenever the calendar page is changed
-                onPageChanged: (focusedDay) {
-                  _focusedDay = focusedDay;
-                },
-
-                eventLoader: _listOfDayEvents,
+                ],
               ),
-            ),
-          ),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: TableCalendar(
+                  focusedDay: _focusedDay,
+                  firstDay: DateTime(2023),
+                  lastDay: DateTime(2024),
 
-          //displaying added events below calendar
-          ..._listOfDayEvents(_selectedDate!).map(
-            (myEvents) => SizedBox(
-              width: 360,
-              child: Card(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-                child: ListTile(
-                  leading: const Icon(
-                    Icons.done,
-                    color: Colors.teal,
+                  startingDayOfWeek: StartingDayOfWeek.monday,
+                  rowHeight: 40,
+
+
+                  headerStyle: const HeaderStyle(
+                    titleCentered: true,
+                    formatButtonVisible: false,
                   ),
-                  title: Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    // child: Text('Event Title: ${myEvents['eventTitle']}'),
-                    child: Text('${myEvents['eventTitle']}'),
+
+                  daysOfWeekStyle: const DaysOfWeekStyle(
+                    weekendStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.red, fontSize: 10),
+                    weekdayStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
                   ),
-                  // subtitle: Text('Description: ${myEvents['eventDesc']}'),
-                  subtitle: Text('${myEvents['eventDesc']}'),
+
+                  calendarStyle: const CalendarStyle(
+                    weekendTextStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+                    defaultTextStyle: TextStyle(fontWeight: FontWeight.bold),
+
+                    //for styling the current date wala circle
+                    todayDecoration: BoxDecoration(
+                      color: todayDateColor,
+                      shape: BoxShape.circle,
+                    ),
+
+                    // for styling the selected date wala circle
+                    selectedDecoration: BoxDecoration(
+                      color: userSelectedDateColor,
+                      shape: BoxShape.circle,
+                    ),
+
+                  ),
+
+                  // to keep focus on user selected date as well as current date
+                  onDaySelected: (selectedDay, focusedDay) {
+                    if (!isSameDay(_selectedDate, selectedDay)) {
+                      setState(() {
+                        _selectedDate = selectedDay;
+                        _focusedDay = focusedDay;
+                      });
+                    }
+                  },
+                  selectedDayPredicate: (day) {
+                    return isSameDay(_selectedDate, day);
+                  },
+
+                  //called whenever the calendar page is changed
+                  onPageChanged: (focusedDay) {
+                    _focusedDay = focusedDay;
+                  },
+
+                  eventLoader: _listOfDayEvents,
                 ),
               ),
             ),
-          ),
-        ],
+
+            //displaying added events below calendar
+            ..._listOfDayEvents(_selectedDate!).map(
+              (myEvents) => SizedBox(
+                width: 360,
+                child: Card(
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.done,
+                      color: Colors.teal,
+                    ),
+                    title: Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      // child: Text('Event Title: ${myEvents['eventTitle']}'),
+                      child: Text('${myEvents['eventTitle']}'),
+                    ),
+                    // subtitle: Text('Description: ${myEvents['eventDesc']}'),
+                    subtitle: Text('${myEvents['eventDesc']}'),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

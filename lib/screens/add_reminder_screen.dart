@@ -192,7 +192,9 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                   ),
               )
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             child: const Text('Add',
               style: TextStyle(color: Colors.pink),
             ),
