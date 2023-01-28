@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:remind_me/models/reminder.dart';
+import 'package:remind_me/models/reminder_data.dart';
 
 class AddReminderScreen extends StatefulWidget {
   const AddReminderScreen({Key? key}) : super(key: key);
@@ -10,6 +13,7 @@ class AddReminderScreen extends StatefulWidget {
 }
 
 class _AddReminderScreenState extends State<AddReminderScreen> {
+  String reminderName = "Buy me a coffee";
   DateTime dateTime = DateTime.now();
   final DateFormat format = DateFormat('MMM');
   @override
@@ -24,7 +28,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
       }
       return str;
     }
-    void _showDialog(Widget child){
+    void showDialog(Widget child){
       showCupertinoModalPopup<void>(context: context,
           builder: (BuildContext context) => Container(
             height: 216,
@@ -80,35 +84,37 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                   ),
                 ),
                 TextField(
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    reminderName = value;
+                  },
                   cursorColor: Colors.white,
                   style: const TextStyle(color: Colors.white),
                   textAlign: TextAlign.center,
                   autofocus: false,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.pink,
-                    hintText: 'Buy me a coffee',
-                    hintStyle: TextStyle(color: Colors.white70),
-                    border: OutlineInputBorder(
+                    hintText: reminderName,
+                    hintStyle: const TextStyle(color: Colors.white70),
+                    border: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.all(
                         Radius.circular(40.0),
                       ),
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 2.0),
                       borderRadius: BorderRadius.all(
                         Radius.circular(40.0),
                       ),
                     ),
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.all(
                         Radius.circular(40.0),
                       ),
                     ),
-                    disabledBorder: OutlineInputBorder(
+                    disabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.all(
                         Radius.circular(40.0),
@@ -145,7 +151,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                 ),
                 ),
               ),
-              onPressed: () => _showDialog(
+              onPressed: () => showDialog(
               CupertinoTheme(
                 data: const CupertinoThemeData(
                   textTheme: CupertinoTextThemeData(
@@ -193,6 +199,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
               )
             ),
             onPressed: () {
+              Provider.of<ReminderData>(context, listen: false).add(Reminder(title: reminderName, dateTime: dateTime));
               Navigator.pop(context);
             },
             child: const Text('Add',

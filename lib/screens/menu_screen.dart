@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:remind_me/constants.dart';
+import 'package:remind_me/models/reminder_data.dart';
 import 'package:remind_me/widgets/add_reminder_tile.dart';
 import 'package:remind_me/widgets/reminder_tile.dart';
 
@@ -50,15 +52,19 @@ Widget widget(){
               style: TextStyle(color: Colors.white),
             ),
         ),
-        ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          scrollDirection: Axis.vertical,
-        itemCount: 10,
-        shrinkWrap: true,
-        itemBuilder: (BuildContext context, int index){
-          return ReminderTile(index: index);
-        },
-      ),
+        Consumer<ReminderData>(
+          builder: (context, reminderData, child){
+           return ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            itemCount: reminderData.reminderCount,
+            shrinkWrap: true,
+            itemBuilder: (BuildContext context, int index){
+              return ReminderTile(index: index);
+            },
+          );
+           },
+        ),
       ],
     ),
   );
