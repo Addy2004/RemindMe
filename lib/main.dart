@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:remind_me/models/reminder_data.dart';
+import 'package:remind_me/services/theme_services.dart';
+import 'Utils/appcolors.dart';
 import 'screens/main_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -24,10 +27,14 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent),);
     return ChangeNotifierProvider(
       create: (context) => ReminderData(),
-      child: MaterialApp(
-        scrollBehavior: NoGlowEffect(),
-        //To disable Widget Splash Effect
-        theme: ThemeData(
+      child:
+      GetMaterialApp(
+      darkTheme: Themes.dark,
+      themeMode: ThemeServices().theme,
+      scrollBehavior: NoGlowEffect(),
+      //To disable Widget Splash Effect
+      theme: ThemeData(
+          useMaterial3: true,
           dividerColor: Colors.transparent,
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,

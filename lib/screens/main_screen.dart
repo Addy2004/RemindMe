@@ -45,7 +45,7 @@ SwitchIcon(switchIconColorCondition: 2 == currentIndex, icon: Icons.settings)
             });
 
           },
-          children: const [MenuScreen(), HomeScreen(), SettingsScreen()],
+          children:  [MenuScreen(), HomeScreen(), SettingsScreen()],
         ),
         bottomNavigationBar: CurvedNavigationBar(
           animationCurve: Curves.easeInQuart,
