@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:remind_me/models/reminder.dart';
 import 'package:remind_me/models/reminder_data.dart';
+import 'package:remind_me/widgets/extra_functions.dart';
 
 class AddReminderScreen extends StatefulWidget {
   const AddReminderScreen({Key? key}) : super(key: key);
@@ -18,16 +19,6 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
   final DateFormat format = DateFormat('MMM');
   @override
   Widget build(BuildContext context) {
-    String pad(int input){
-      String str = "";
-      if(input > 9){
-        str = input.toString();
-      }
-      else{
-        str = "0${input.toString()}";
-      }
-      return str;
-    }
     void showDialog(Widget child){
       showCupertinoModalPopup<void>(context: context,
           builder: (BuildContext context) => Container(
@@ -161,12 +152,12 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                   )
                 ),
                 child: CupertinoDatePicker(
-                  initialDateTime: dateTime,
+                  initialDateTime: DateTime.now(),
                   mode: CupertinoDatePickerMode.dateAndTime,
                   use24hFormat: true,
                   onDateTimeChanged: (DateTime newDateTime){
                     setState(() {
-                      dateTime = newDateTime;
+                      dateTime = dateTimeChecker(newDateTime);
                     });
                   },
                 ),
@@ -185,6 +176,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
           const SizedBox(height: 10.0),
           TextButton(
             style: ButtonStyle(
+              splashFactory: NoSplash.splashFactory,
               elevation: MaterialStateProperty.all(10.0),
               padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.only(
                 top: 10.0, bottom: 10.0,

@@ -65,10 +65,10 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
     mySelectedEvents = {
       "2023-01-16": [
         {"eventTitle": "Hello", "eventDesc": "World"},
-        {"eventTitle": "namaste", "eventDesc": "duniya"}
+        {"eventTitle": "text", "eventDesc": "text"}
       ],
       "2023-01-30": [
-        {"eventTitle": "byebye", "eventDesc": "bye"}
+        {"eventTitle": "bye bye", "eventDesc": "bye"}
       ],
       "2023-01-27": [
         {"eventTitle": "one", "eventDesc": "two"}

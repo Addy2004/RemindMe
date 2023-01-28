@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:remind_me/models/reminder_data.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+import 'package:remind_me/widgets/extra_functions.dart';
 
 class ReminderTile extends StatelessWidget {
   final int index;
@@ -10,6 +12,7 @@ class ReminderTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final DateFormat format = DateFormat('MMMM');
     return Consumer<ReminderData>(
       builder: (context, reminderData, child){
         final reminder = reminderData.reminders[index];
@@ -36,7 +39,11 @@ class ReminderTile extends StatelessWidget {
                     childrenPadding: const EdgeInsets.all(10.0),
                     children: [
                       Padding(padding: const EdgeInsets.all(10.0),
-                        child: Text('${reminder.dateTime}',
+                        child: Text('${reminder.dateTime.day} '
+                            '${format.format(reminder.dateTime)} '
+                            '${reminder.dateTime.year}, '
+                            '${pad(reminder.dateTime.hour)}:'
+                            '${pad(reminder.dateTime.minute)}',
                           style: const TextStyle(color: Colors.pink),
                         ),
                       ),
