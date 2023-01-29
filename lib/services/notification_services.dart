@@ -9,7 +9,7 @@ class NotifyHelper {
     await flutterLocalNotificationsPlugin.initialize(initializationsSettings) ;
   }
 
-
+//
   void sendNotification({var id =0 ,
     required String title,
     required String body,
