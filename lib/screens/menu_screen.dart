@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:remind_me/constants.dart';
 import 'package:remind_me/models/reminder_data.dart';
 import 'package:remind_me/widgets/add_reminder_tile.dart';
 import 'package:remind_me/widgets/reminder_tile.dart';
+import 'package:remind_me/widgets/customized_cupertino_context_menu/cupertino_context_menu.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({Key? key}) : super(key: key);
@@ -60,7 +62,24 @@ Widget widget(){
             itemCount: reminderData.reminderCount,
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index){
-              return ReminderTile(index: index);
+              return CustomizedCupertinoContextMenu(
+                previewBuilder: (context, animation, child){
+                  return SingleChildScrollView(
+                      child: ReminderTile(index: index),
+                  );
+                },
+                actions: [
+                  CupertinoContextMenuAction(
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    trailingIcon: Icons.delete,
+                    isDestructiveAction: true,
+                    child: const Text('Delete'),
+                  )
+                ],
+                  child: ReminderTile(index: index),
+              );
             },
           );
            },

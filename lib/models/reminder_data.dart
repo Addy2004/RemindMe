@@ -16,4 +16,8 @@ class ReminderData extends ChangeNotifier{
     notifyListeners();
   }
 
+  void toggleControl(Reminder reminder){
+    reminder.toggleSwitch();
+    notifyListeners();
+  }
 }
