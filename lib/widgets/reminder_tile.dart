@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:remind_me/models/reminder.dart';
 import 'package:remind_me/models/reminder_data.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:remind_me/widgets/customized_cupertino_context_menu/cupertino_context_menu.dart';
 import 'package:remind_me/widgets/extra_functions.dart';
 
 class ReminderTile extends StatefulWidget {
@@ -22,7 +24,33 @@ class _ReminderTileState extends State<ReminderTile> {
     return Consumer<ReminderData>(
       builder: (context, reminderData, child){
         final reminder = reminderData.reminders[widget.index];
-        return Card(
+        return CustomizedCupertinoContextMenu(
+          previewBuilder: (context, animation, child){
+            return SingleChildScrollView(
+              child: buildCard(reminder, reminderData, format),
+            );
+          },
+          actions: [
+            CupertinoContextMenuAction(
+              onPressed: (){
+                setState(() {
+                  reminderData.remove(reminder);
+                  Navigator.pop(context);
+                });
+              },
+              isDestructiveAction: true,
+              trailingIcon: Icons.delete,
+              child: const Text('Delete'),
+            )
+          ],
+          child: buildCard(reminder, reminderData, format),
+        );
+      },
+    );
+  }
+
+  Card buildCard(Reminder reminder, ReminderData reminderData, DateFormat format) {
+    return Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50.0),
             ),
@@ -73,7 +101,5 @@ class _ReminderTileState extends State<ReminderTile> {
               ),
             ),
           );
-      },
-    );
   }
 }
