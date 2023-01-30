@@ -27,7 +27,55 @@ class _ReminderTileState extends State<ReminderTile> {
         return CustomizedCupertinoContextMenu(
           previewBuilder: (context, animation, child){
             return SingleChildScrollView(
-              child: buildCard(reminder, reminderData, format),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                elevation: 10.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: ListTileTheme(
+                    dense: true,
+                    child: ExpansionTile(
+                      trailing: CupertinoSwitch(
+                          activeColor: Colors.pink,
+                          value: reminder.control,
+                          onChanged: (bool? value){
+
+                          }),
+                      title: Align(
+                        alignment: const Alignment(-0.75, 0),
+                        child: Text(reminder.title,
+                          style: const TextStyle(
+                              color: Colors.pink),
+                        ),
+                      ),
+                      childrenPadding: const EdgeInsets.all(10.0),
+                      children: [
+                        Padding(padding: const EdgeInsets.all(10.0),
+                          child: Text('${reminder.dateTime.day} '
+                              '${format.format(reminder.dateTime)} '
+                              '${reminder.dateTime.year}, '
+                              '${pad(reminder.dateTime.hour)}:'
+                              '${pad(reminder.dateTime.minute)}',
+                            style: const TextStyle(color: Colors.pink),
+                          ),
+                        ),
+                        const Padding(padding: EdgeInsets.all(10.0),
+                          child: Text('Text',
+                            style: TextStyle(color: Colors.pink),
+                          ),
+                        ),
+                        const Padding(padding: EdgeInsets.all(10.0),
+                          child: Text('Text',
+                            style: TextStyle(color: Colors.pink),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
             );
           },
           actions: [
