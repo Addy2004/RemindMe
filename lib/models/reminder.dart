@@ -1,11 +1,21 @@
+// ignore_for_file: unnecessary_getters_setters
+
 class Reminder{
-  final String _title;
-  final DateTime _dateTime;
+  String _title;
+  DateTime _dateTime;
   bool _control;
 
   String get title => _title;
   DateTime get dateTime => _dateTime;
   bool get control => _control;
+
+  set title(String title){
+    _title = title;
+  }
+
+  set dateTime(DateTime dateTime){
+    _dateTime = dateTime;
+  }
 
   Reminder({required String title,
     required DateTime dateTime,

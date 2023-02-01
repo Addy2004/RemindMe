@@ -4,6 +4,7 @@ import 'package:remind_me/models/reminder.dart';
 import 'package:remind_me/models/reminder_data.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:remind_me/screens/edit_reminder_screen.dart';
 import 'package:remind_me/widgets/customized_cupertino_context_menu/cupertino_context_menu.dart';
 import 'package:remind_me/widgets/extra_functions.dart';
 
@@ -79,6 +80,29 @@ class _ReminderTileState extends State<ReminderTile> {
             );
           },
           actions: [
+            CupertinoContextMenuAction(
+              onPressed: (){
+                setState(() {
+                  showModalBottomSheet(
+                    barrierColor: Colors.black.withAlpha(1),
+                    backgroundColor: Colors.transparent,
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) => SingleChildScrollView(
+                      child: Container(
+                        color: Colors.transparent,
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                        child: EditReminderScreen(reminder: reminder, index: widget.index),
+                      ),
+                    ),
+                  );
+                });
+              },
+              isDefaultAction: true,
+              trailingIcon: Icons.edit,
+              child: const Text('Edit'),
+            ),
             CupertinoContextMenuAction(
               onPressed: (){
                 setState(() {

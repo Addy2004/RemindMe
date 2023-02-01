@@ -21,6 +21,12 @@ class ReminderData extends ChangeNotifier{
     notifyListeners();
   }
 
+  void edit(Reminder reminder, int index){
+    _reminders[index].title = reminder.title;
+    _reminders[index].dateTime = reminder.dateTime;
+    notifyListeners();
+  }
+
   void toggleControl(Reminder reminder){
     reminder.toggleSwitch();
     notifyListeners();
