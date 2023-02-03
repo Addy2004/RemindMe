@@ -1,10 +1,26 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:remind_me/models/reminder_data.dart';
 import 'screens/main_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-void main() {
+FlutterLocalNotificationsPlugin notificationsPlugin = FlutterLocalNotificationsPlugin();
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  AndroidInitializationSettings androidInitializationSettings
+  =const AndroidInitializationSettings('@mipmap/ic_launcher');
+
+  InitializationSettings initializationSettings
+  = InitializationSettings(android: androidInitializationSettings);
+
+  bool? initialized = await notificationsPlugin.initialize(initializationSettings);
+  
+  log("Notifications: $initialized");
+  
   runApp(const MyApp());
 }
 
