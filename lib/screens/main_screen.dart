@@ -46,11 +46,7 @@ SwitchIcon(switchIconColorCondition: 2 == currentIndex, icon: Icons.settings)
             });
 
           },
-<<<<<<< HEAD
           children: [MenuScreen(), HomeScreen(), SettingsScreen()],
-=======
-          children:  [MenuScreen(), HomeScreen(), SettingsScreen()],
->>>>>>> b8215c5698b7811667f4f69466d8c8a0c3cebd34
         ),
         bottomNavigationBar: CurvedNavigationBar(
           animationCurve: Curves.easeInQuart,

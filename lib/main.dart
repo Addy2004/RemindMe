@@ -5,7 +5,6 @@ import 'package:remind_me/models/reminder_data.dart';
 import 'package:remind_me/services/theme_services.dart';
 import 'screens/main_screen.dart';
 import 'Utils/appcolors.dart';
-
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
