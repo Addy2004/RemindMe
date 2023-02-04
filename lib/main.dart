@@ -1,7 +1,11 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:remind_me/models/reminder_data.dart';
+import 'package:remind_me/services/theme_services.dart';
 import 'screens/main_screen.dart';
+import 'Utils/appcolors.dart';
+
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -40,14 +44,17 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent),);
     return ChangeNotifierProvider(
       create: (context) => ReminderData(),
-      child: MaterialApp(
+      child: GetMaterialApp(
+        darkTheme: Themes.dark,
+        themeMode: ThemeServices().theme,
         scrollBehavior: NoGlowEffect(),
         //To disable Widget Splash Effect
         theme: ThemeData(
-          dividerColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          hoverColor: Colors.transparent
+            useMaterial3: true,
+            dividerColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent
         ),
         //App initializes with MainScreen()
         initialRoute: MainScreen.id,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 //MainScreen
 const kMainScreenHeadingTextStyle = TextStyle(fontSize: 40.0, color: Colors.white);
-const Color kMainScreenBackgroundColor = Colors.pink;
 const kUserGreetTextStyle = TextStyle(fontSize: 25.0, color: Colors.white);
 
 //CurvedNavigationBar

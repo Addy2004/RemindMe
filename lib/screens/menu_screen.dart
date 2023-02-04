@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:remind_me/Utils/appcolors.dart';
 import 'package:remind_me/constants.dart';
 import 'package:remind_me/models/reminder_data.dart';
 import 'package:remind_me/widgets/add_reminder_tile.dart';
@@ -17,7 +18,7 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     //TODO Menu Screen
     return Scaffold(
-      backgroundColor: kMainScreenBackgroundColor,
+      backgroundColor: pinkCLr,
       body: CustomScrollView(
         slivers: [
            SliverAppBar(
