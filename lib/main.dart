@@ -44,17 +44,18 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent),);
     return ChangeNotifierProvider(
       create: (context) => ReminderData(),
-      child: GetMaterialApp(
-        darkTheme: Themes.dark,
-        themeMode: ThemeServices().theme,
-        scrollBehavior: NoGlowEffect(),
-        //To disable Widget Splash Effect
-        theme: ThemeData(
-            useMaterial3: true,
-            dividerColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            hoverColor: Colors.transparent
+      child:
+      GetMaterialApp(
+      darkTheme: Themes.dark,
+      themeMode: ThemeServices().theme,
+      scrollBehavior: NoGlowEffect(),
+      //To disable Widget Splash Effect
+      theme: ThemeData(
+          useMaterial3: true,
+          dividerColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent
         ),
         //App initializes with MainScreen()
         initialRoute: MainScreen.id,
