@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remind_me/Utils/appcolors.dart';
 import 'package:remind_me/constants.dart';
 import 'package:remind_me/screens/home_screen.dart';
 import 'settings_screen.dart';
@@ -34,7 +35,7 @@ SwitchIcon(switchIconColorCondition: 2 == currentIndex, icon: Icons.settings)
       top: false,
       child: Scaffold(
         extendBody: true,
-        backgroundColor: kMainScreenBackgroundColor,
+        backgroundColor: pinkCLr,
         body: PageView(
           controller: pageController,
           onPageChanged: (newIndex){
@@ -45,7 +46,7 @@ SwitchIcon(switchIconColorCondition: 2 == currentIndex, icon: Icons.settings)
             });
 
           },
-          children: const [MenuScreen(), HomeScreen(), SettingsScreen()],
+          children: [MenuScreen(), HomeScreen(), SettingsScreen()],
         ),
         bottomNavigationBar: CurvedNavigationBar(
           animationCurve: Curves.easeInQuart,
