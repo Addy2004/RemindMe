@@ -15,7 +15,7 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
-    //TODO Menu Screen
+    //TODO- Finish Menu Screen (already 90-95% complete)
     return Scaffold(
       backgroundColor: kMainScreenBackgroundColor,
       body: CustomScrollView(

@@ -24,6 +24,7 @@ class NotificationService{
        colorized: true,
        color: Colors.pink,
        fullScreenIntent: true,
+       //TODO- this has a boolean property called playSound(by default set to true), change it to toggle between silent and alarm mode. Do state management to get the value out to the widget screen to let the user toggle it him/her/themself
        importance: Importance.max,
        priority: Priority.max
 

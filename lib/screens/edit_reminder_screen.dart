@@ -18,7 +18,7 @@ class EditReminderScreen extends StatefulWidget {
 class _EditReminderScreenState extends State<EditReminderScreen> {
   late String reminderName = widget.reminder.title;
   late DateTime dateTime = widget.reminder.dateTime;
-
+//TODO- get the stored notes value here like done above
   final DateFormat format = DateFormat('MMM');
   @override
   Widget build(BuildContext context) {
@@ -178,6 +178,7 @@ class _EditReminderScreenState extends State<EditReminderScreen> {
             ),
           ),
           const SizedBox(height: 10.0),
+          //TODO- Add TextFormField/TextField to edit inputs for notes
           TextButton(
             style: ButtonStyle(
                 splashFactory: NoSplash.splashFactory,
@@ -195,7 +196,11 @@ class _EditReminderScreenState extends State<EditReminderScreen> {
                 )
             ),
             onPressed: () {
-              Provider.of<ReminderData>(context, listen: false).edit(Reminder(title: reminderName, dateTime: dateTime), widget.index);
+              Provider.of<ReminderData>(context, listen: false).edit(Reminder(
+                  title: reminderName,
+                  dateTime: dateTime
+                  //TODO- send the edited notes to ReminderData
+              ), widget.index);
               Navigator.pop(context);
             },
             child: const Text('Save',

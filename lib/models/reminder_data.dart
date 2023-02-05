@@ -2,7 +2,7 @@ import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:remind_me/services/notification_service.dart';
 import 'reminder.dart';
-
+//Reminder Implementation with Provider Package
 class ReminderData extends ChangeNotifier{
   final List<Reminder> _reminders = [];
 
@@ -32,8 +32,11 @@ class ReminderData extends ChangeNotifier{
     notifyListeners();
   }
 
+  //TODO-Cupertino Switch (ReminderData toggle)
   void toggleControl(Reminder reminder){
     reminder.toggleSwitch();
     notifyListeners();
   }
+
+  //TODO- create a method for silent/alarm toggle
 }

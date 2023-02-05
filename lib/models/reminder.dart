@@ -1,8 +1,9 @@
 // ignore_for_file: unnecessary_getters_setters
-
+//Reminder Class
 class Reminder{
   String _title;
   DateTime _dateTime;
+  //TODO- Add a type for reminder notes here and create and get and set methods for it
   bool _control;
 
   String get title => _title;
@@ -25,6 +26,7 @@ class Reminder{
         _dateTime = dateTime,
         _control = control;
 
+  //TODO-Cupertino Switch (Reminder toggle)
   void toggleSwitch(){
     _control = !_control;
   }

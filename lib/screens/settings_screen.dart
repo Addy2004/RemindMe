@@ -3,7 +3,7 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    //TODO Settings Screen
+    //TODO Settings Screen (Neutx)
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: const [
