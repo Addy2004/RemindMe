@@ -16,6 +16,7 @@ class AddReminderScreen extends StatefulWidget {
 class _AddReminderScreenState extends State<AddReminderScreen> {
   String reminderName = "Buy me a coffee";
   DateTime dateTime = DateTime.now();
+  //TODO- Initialize a notes value here
   final DateFormat format = DateFormat('MMM');
   @override
   Widget build(BuildContext context) {
@@ -174,6 +175,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
             ),
           ),
           const SizedBox(height: 10.0),
+          //TODO- Add TextFormField/TextField to take inputs for notes
           TextButton(
             style: ButtonStyle(
               splashFactory: NoSplash.splashFactory,
@@ -191,7 +193,12 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
               )
             ),
             onPressed: () {
-              Provider.of<ReminderData>(context, listen: false).add(Reminder(title: reminderName, dateTime: dateTime));
+
+              Provider.of<ReminderData>(context, listen: false).add(Reminder(
+                  title: reminderName,
+                  dateTime: dateTime
+                  //TODO- add the newly input notes value to reminderData
+              ));
               Navigator.pop(context);
             },
             child: const Text('Add',

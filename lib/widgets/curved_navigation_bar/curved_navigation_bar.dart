@@ -171,18 +171,19 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
   }
 
   void _buttonTap(int index) {
-    if (!widget.letIndexChange(index)) {
-      return;
-    }
-    if (widget.onTap != null) {
-      widget.onTap!(index);
-    }
-    final newPosition = index / _length;
-    setState(() {
-      _startingPos = _pos;
-      _endingIndex = index;
-      _animationController.animateTo(newPosition,
-          duration: widget.animationDuration, curve: widget.animationCurve);
-    });
+    //(Uncomment all of this if you want to re-enable navigation bar touch input)
+    // if (!widget.letIndexChange(index)) {
+    //   return;
+    // }
+    // if (widget.onTap != null) {
+    //   widget.onTap!(index);
+    // }
+    // final newPosition = index / _length;
+    // setState(() {
+    //   _startingPos = _pos;
+    //   _endingIndex = index;
+    //   _animationController.animateTo(newPosition,
+    //       duration: widget.animationDuration, curve: widget.animationCurve);
+    // });
   }
 }

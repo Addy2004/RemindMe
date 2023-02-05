@@ -14,6 +14,9 @@ FlutterLocalNotificationsPlugin notificationsPlugin = FlutterLocalNotificationsP
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
+  notificationsPlugin.resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()?.requestPermission();
+
   AndroidInitializationSettings androidInitializationSettings
   =const AndroidInitializationSettings('@mipmap/ic_launcher');
 
