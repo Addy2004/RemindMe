@@ -14,8 +14,6 @@ class SettingsScreen extends StatelessWidget {
     bool dell2 = true;
     bool dell3 = true;
 
-    // isLocked = false;
-    // isChangePassword = false;
     //TODO Settings Screen
     return Scaffold(
       appBar: AppBar(
@@ -25,6 +23,10 @@ class SettingsScreen extends StatelessWidget {
         title: Text('User Settings'),
       ),
       body:
+
+
+
+
       SettingsList(
         sections: [
           SettingsSection(
